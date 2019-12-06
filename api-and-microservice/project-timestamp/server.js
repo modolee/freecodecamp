@@ -30,9 +30,6 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/timestamp/:date_string?", function (req, res) {
   let date = myApp.getDate(req.params.date_string);
 
-  console.log(date);
-
-
   if (date === null) {
     res.json({error: "Invalid Date"});
   } else {
