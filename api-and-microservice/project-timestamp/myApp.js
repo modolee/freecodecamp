@@ -29,7 +29,9 @@ const getDateWithType = (dateString) => {
 const getValidDateOrNull = (dateString) => {
     let date;
 
-    if(!(date = new Date(dateString))) {
+    date = new Date(dateString)
+
+    if (date == 'Invalid Date') {
         date = null;
     }
 
