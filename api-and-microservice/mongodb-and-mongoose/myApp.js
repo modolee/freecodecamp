@@ -138,8 +138,13 @@ var createManyPeople = function(arrayOfPeople, done) {
 
 var findPeopleByName = function(personName, done) {
 
-  done(null/*, data*/);
-
+  Person.find({name: personName}, (err, people) => {
+    if (err) {
+      done(err);
+    } else {
+      done(null, people);
+    }
+  });
 };
 
 /** 6) Use `Model.findOne()` */
@@ -153,7 +158,13 @@ var findPeopleByName = function(personName, done) {
 
 var findOneByFood = function(food, done) {
 
-  done(null/*, data*/);
+  Person.findOne({favoriteFoods: food}, (err, people) => {
+    if (err) {
+      done(err);
+    } else {
+      done(null, people);
+    }
+  });
 
 };
 
@@ -168,8 +179,14 @@ var findOneByFood = function(food, done) {
 
 var findPersonById = function(personId, done) {
 
-  done(null/*, data*/);
-
+  Person.findById(personId, (err, person) => {
+    if (err) {
+      done(err);
+    } else {
+      done(null, person);
+    }
+  });
+  
 };
 
 /** # CR[U]D part III - UPDATE #
