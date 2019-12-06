@@ -186,7 +186,7 @@ var findPersonById = function(personId, done) {
       done(null, person);
     }
   });
-  
+
 };
 
 /** # CR[U]D part III - UPDATE #
@@ -217,7 +217,23 @@ var findPersonById = function(personId, done) {
 var findEditThenSave = function(personId, done) {
   var foodToAdd = 'hamburger';
 
-  done(null/*, data*/);
+  Person.findById(personId, (err, person) => {
+    if(err) {
+      done(err);
+    } else {
+      person.favoriteFoods.push(foodToAdd);
+
+      person.save((err, data) => {
+        if(err) {
+          done(err);
+        } else {
+          Person.update();
+          done(null, person);
+        }
+      });
+    }
+  });
+
 };
 
 /** 9) New Update : Use `findOneAndUpdate()` */
